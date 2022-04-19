@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/reviews" do
-    Review.all.to_json
+    Review.all.to_json(methods: [:username])
   end
 
   get "/users" do
