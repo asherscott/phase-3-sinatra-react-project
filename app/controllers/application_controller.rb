@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/" do
-    Game.all.to_json
+    Game.all.to_json(methods: [:game_reviews])
   end
 
   get "/reviews" do
