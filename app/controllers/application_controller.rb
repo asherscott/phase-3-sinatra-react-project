@@ -14,4 +14,11 @@ class ApplicationController < Sinatra::Base
     User.all.to_json
   end
 
+  post "/games" do
+    game = Game.new(params)
+    game.save
+    game.to_json
+  end
+
+
 end
