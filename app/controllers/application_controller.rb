@@ -14,8 +14,8 @@ class ApplicationController < Sinatra::Base
     Review.all.to_json
   end
 
-  get "/users" do
-    User.all.to_json
+  get "/users/:id" do
+    User.find(params[:id]).to_json(include: [reviews: {methods: [:username]}])
   end
 
   get "/reviews/:id" do

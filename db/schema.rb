@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2022_04_21_002659) do
     t.integer "user_id"
     t.string "comment"
     t.date "date"
-    t.integer "likes", default: 18
+    t.integer "likes", default: 0
   end
 
   create_table "users", force: :cascade do |t|

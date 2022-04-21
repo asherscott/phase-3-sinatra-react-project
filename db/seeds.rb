@@ -14,13 +14,13 @@ puts "🌱 creating games..."
 end
 
 puts "🌱 creating reviews..."
-50.times do 
+70.times do 
     Review.create(
         game_id: rand(1..10),
         user_id: rand(2..21),
         rating: rand(1..5),
         comment: Faker::GreekPhilosophers.quote,
-        date: Faker::Date.between(from: '1998-09-23', to: '2021-09-25')
+        date: Faker::Date.between(from: '2021-04-10', to: '2021-04-25')
     )
 end
 
