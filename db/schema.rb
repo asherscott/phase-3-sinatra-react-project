@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_20_223336) do
+ActiveRecord::Schema.define(version: 2022_04_21_002659) do
 
   create_table "games", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_04_20_223336) do
     t.string "platform"
     t.string "description"
     t.date "release"
+    t.string "image", default: "https://cohenwoodworking.com/wp-content/uploads/2016/09/image-placeholder-500x500.jpg"
   end
 
   create_table "reviews", force: :cascade do |t|

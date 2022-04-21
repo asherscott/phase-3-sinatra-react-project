@@ -14,9 +14,28 @@ class ApplicationController < Sinatra::Base
     User.all.to_json
   end
 
+  get "/reviews/:id" do
+    Review.find(params[:id]).to_json
+  end
+
   post "/reviews" do
     Review.create(params)
     Review.last.to_json(methods: [:username])
   end
 
+  patch "/reviews/:id" do 
+    # review = Review.find(params[:id])
+    # review.update(review_params)
+    review = Review.find(params[:id])
+    review.update(params)
+    Review.find(params[:id]).to_json
+  end
+
 end
+
+# private
+
+# def review_params
+#   allowed_params = %w(id, rating, game_id, user_id, comment, date, likes)
+#   params.select |param, value| allowed_params.include?(params)
+# end
