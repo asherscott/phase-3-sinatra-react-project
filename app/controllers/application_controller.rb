@@ -30,6 +30,13 @@ class ApplicationController < Sinatra::Base
     review.update(params)
     Review.find(params[:id]).to_json
   end
+  post "/games" do
+    game = Game.create(params)
+    # game = Game.new(params)
+    # game.save
+    game.to_json
+  end
+
 
 end
 
