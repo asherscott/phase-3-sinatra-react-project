@@ -6,6 +6,10 @@ class ApplicationController < Sinatra::Base
     Game.all.to_json(methods: :avg_rating, include: [reviews: {methods: [:username]}])
   end
 
+  get "/games/:id" do
+    Game.find(params[:id]).to_json
+  end
+
   get "/reviews" do
     Review.all.to_json
   end
@@ -37,6 +41,10 @@ class ApplicationController < Sinatra::Base
     game.to_json(include: [reviews: {methods: [:username]}])
   end
 
+  delete "/games/:id" do
+    game = Game.find(params[:id])
+    game.destroy
+  end
 
 end
 
