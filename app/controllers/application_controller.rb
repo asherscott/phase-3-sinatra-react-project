@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
     game = Game.create(params)
     # game = Game.new(params)
     # game.save
-    game.to_json
+    game.to_json(include: [reviews: {methods: [:username]}])
   end
 
 
