@@ -38,7 +38,7 @@ class ApplicationController < Sinatra::Base
     game = Game.create(params)
     # game = Game.new(params)
     # game.save
-    game.to_json(include: [reviews: {methods: [:username]}])
+    Game.last.to_json(methods: :avg_rating, include: [reviews: {methods: [:username]}])
   end
 
   delete "/games/:id" do
