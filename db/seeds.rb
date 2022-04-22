@@ -99,7 +99,6 @@ end
 
 puts "🌱 creating users..."
 User.create(name: "anonymous", id:1)
-20.times do
     User.create(
         name: Faker::Name.name
     )
