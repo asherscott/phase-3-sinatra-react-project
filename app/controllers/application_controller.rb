@@ -14,6 +14,10 @@ class ApplicationController < Sinatra::Base
     Review.all.to_json
   end
 
+  get "/users" do
+    User.all.to_json(include: [reviews: {methods: [:username]}])
+  end
+
   get "/users/:id" do
     User.find(params[:id]).to_json(include: [reviews: {methods: [:username]}])
   end
@@ -25,6 +29,11 @@ class ApplicationController < Sinatra::Base
   post "/reviews" do
     Review.create(params)
     Review.last.to_json(methods: [:username])
+  end
+
+  post "/users" do
+    User.create(params)
+    User.last.to_json
   end
 
   patch "/reviews/:id" do 
