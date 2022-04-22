@@ -9,4 +9,10 @@ class Game < ActiveRecord::Base
         end
         0
     end
+
+    def sort_review_by_likes
+        self.reviews.sort do |a, b|
+            b.likes <=> a.likes
+        end
+    end
 end
