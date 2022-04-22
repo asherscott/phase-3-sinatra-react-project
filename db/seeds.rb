@@ -89,7 +89,7 @@ puts "🌱 creating games..."
 puts "🌱 creating reviews..."
 70.times do 
     Review.create(
-        game_id: rand(1..10),
+        game_id: rand(1..9),
         user_id: rand(2..21),
         rating: rand(1..5),
         comment: Faker::GreekPhilosophers.quote,
@@ -99,6 +99,7 @@ end
 
 puts "🌱 creating users..."
 User.create(name: "anonymous", id:1)
+20.times do 
     User.create(
         name: Faker::Name.name
     )
