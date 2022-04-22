@@ -34,6 +34,7 @@ class ApplicationController < Sinatra::Base
     review.update(params)
     Review.find(params[:id]).to_json
   end
+
   post "/games" do
     game = Game.create(params)
     # game = Game.new(params)
@@ -43,6 +44,11 @@ class ApplicationController < Sinatra::Base
 
   delete "/games/:id" do
     game = Game.find(params[:id])
+    game.destroy
+  end
+
+  delete "/reviews/:id" do
+    game = Review.find(params[:id])
     game.destroy
   end
 
