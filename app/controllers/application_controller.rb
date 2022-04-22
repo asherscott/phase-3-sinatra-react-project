@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/" do
-    Game.all.to_json(methods: :avg_rating, include: [reviews: {methods: [:username]}])
+    Game.all.to_json(methods: [:avg_rating], include: [reviews: {methods: [:username]}])
   end
 
   get "/games/:id" do
@@ -15,7 +15,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/users" do
-    User.all.to_json
+    User.all.to_json(include: [reviews: {methods: [:username]}])
+  end
+
+  get "/users/:id" do
+    User.find(params[:id]).to_json(include: [reviews: {methods: [:username]}])
   end
 
   get "/reviews/:id" do
@@ -25,6 +29,11 @@ class ApplicationController < Sinatra::Base
   post "/reviews" do
     Review.create(params)
     Review.last.to_json(methods: [:username])
+  end
+
+  post "/users" do
+    User.create(params)
+    User.last.to_json
   end
 
   patch "/reviews/:id" do 
